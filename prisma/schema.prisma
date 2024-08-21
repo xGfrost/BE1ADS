@@ -9,12 +9,12 @@ datasource db {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model cuti {
-  id           Int       @id @default(autoincrement())
-  Nomor_Induk  String?   @db.VarChar(10)
-  Tanggal_Cuti DateTime? @db.Date
-  Lama_Cuti    Int?
-  Keterangan   String?   @db.VarChar(50)
-  karyawan     karyawan? @relation(fields: [Nomor_Induk], references: [Nomor_Induk], onDelete: Restrict, onUpdate: Restrict, map: "cuti_ibfk_1")
+  id           Int      @id @default(autoincrement())
+  Nomor_Induk  String   @db.VarChar(10)
+  Tanggal_Cuti DateTime @db.Date
+  Lama_Cuti    Int
+  Keterangan   String   @db.VarChar(50)
+  karyawan     karyawan @relation(fields: [Nomor_Induk], references: [Nomor_Induk], onUpdate: Restrict, map: "cuti_ibfk_1")
 
   @@index([Nomor_Induk], map: "Nomor_Induk")
 }
