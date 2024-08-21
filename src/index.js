@@ -17,6 +17,6 @@ app.use('/cuti', cutiController);
 
 
 app.listen(PORT, () =>{
-    console.log("express API rinningin port: " + PORT);
+    console.log("express API running in port: " + PORT);
 })
 
