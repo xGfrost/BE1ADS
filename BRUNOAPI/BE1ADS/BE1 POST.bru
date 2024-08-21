@@ -1,0 +1,18 @@
+meta {
+  name: BE1 POST
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/
+  body: multipartForm
+  auth: none
+}
+
+body:multipart-form {
+  Nomor_Induk: IP06011
+  Nama: Muhammad Fadel Akbar
+  Alamat: JLN ANOA NO 41 B
+  Tanggal_Lahir: 2004-07-21
+}

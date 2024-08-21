@@ -1,20 +1,20 @@
 const { findkaryawan, findkaryawanbyid, deleteid, insertkaryawan, editkaryawan } = require("./karyawan.repository");
 
 const getallkaryawan = async (Nama) => {
-    const karyawan = await findkaryawan(Nama);
+    const ky = await findkaryawan(Nama);
 
-    return karyawan;
+    return ky;
 }
 
 const getallkaryawanbyid = async (Nomor_Induk) => {
-    const karyawan = await findkaryawanbyid(Nomor_Induk)
+    const ky = await findkaryawanbyid(Nomor_Induk)
 
-    if(!karyawan){
-        throw new Error("Nomor induk karyawan not found");
+    if(!ky){
+        throw new Error("Nomor induk ky not found");
         
     }
 
-    return karyawan;
+    return ky;
 }
 
 const deletekaryawan = async (Nomor_Induk) => {
@@ -23,15 +23,15 @@ const deletekaryawan = async (Nomor_Induk) => {
 }
 
 const createKaryawan = async (karyawandata) => {
-    const karyawan = await insertkaryawan(karyawandata);
+    const ky = await insertkaryawan(karyawandata);
 
-    return karyawan;
+    return ky;
 }
 
 const updatekaryawan = async (Nomor_Induk, karyawandata) => {
-    const karyawan = await editkaryawan(Nomor_Induk, karyawandata);
+    const ky = await editkaryawan(Nomor_Induk, karyawandata);
 
-    return karyawan;
+    return ky;
 }
 
 

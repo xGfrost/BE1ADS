@@ -8,7 +8,6 @@ dotenv.config();
 const PORT = process.env.PORT;
 
 app.use(express.json());
-app.use(express.urlencoded({ extended:true}));
 
 const karyawanController = require("./karyawan/karyawan.controller");
 const cutiController = require("./cuti/cuti.controller");

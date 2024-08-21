@@ -1,18 +1,18 @@
 const prisma = require("../db");
 
 const findkaryawan = async(Nama) => {
-    const karyawan = await prisma.karyawan.findMany({
+    const ky = await prisma.karyawan.findMany({
         where:{
             Nama:{
                 contains:Nama
             }
         }
     })
-    return karyawan;
+    return ky;
 }
 
 const findkaryawanbyid = async (Nomor_Induk) => {
-    const karyawan = await prisma.karyawan.findUnique({
+    const ky = await prisma.karyawan.findUnique({
         where:{
             Nomor_Induk: Nomor_Induk,
         },
@@ -20,30 +20,34 @@ const findkaryawanbyid = async (Nomor_Induk) => {
             cuti: true
         }
     })
-    return karyawan;
+    return ky;
 }
 
 const insertkaryawan = async (karyawandata) => {
-    const karyawan = await prisma.karyawan.create({
-       Nama: karyawandata.Nama,
-       Alamat: karyawandata.Alamat,
-       Tanggal_Lahir: Date(karyawandata.Tanggal_Lahir), 
+    const ky = await prisma.karyawan.create({
+        data:{
+            Nomor_Induk: karyawandata.Nomor_Induk,
+            Nama: karyawandata.Nama,
+            Alamat: karyawandata.Alamat,
+            Tanggal_Lahir: new Date(karyawandata.Tanggal_Lahir), 
+        }
     })
-    return karyawan;
+    return ky;
 }
 
 const editkaryawan = async (Nomor_Induk, karyawandata) => {
-    const karyawan = await prisma.karyawan.update({
+    const ky = await prisma.karyawan.update({
         where:{
             Nomor_Induk: Nomor_Induk,
         },
         data:{
+            Nomor_Induk: karyawandata.Nomor_Induk,
             Nama: karyawandata.Nama,
             Alamat: karyawandata.Alamat,
-            Tanggal_Lahir: Date(karyawandata.Tanggal_Lahir),
+            Tanggal_Lahir: new Date(karyawandata.Tanggal_Lahir),
         }
     })
-    return karyawan;
+    return ky;
 }
 
 const deleteid = async (Nomor_Induk) => {
