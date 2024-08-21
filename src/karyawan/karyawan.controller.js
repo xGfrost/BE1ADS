@@ -4,10 +4,10 @@ const router = express.Router();
 
 router.get("/", async (req,res) => {
     try {
-        const nama = req.query.nama;
+        const Nama = req.query.Nama;
         let karyawan;
-        if (nama) {
-            karyawan = await getallkaryawan(nama);
+        if (Nama) {
+            karyawan = await getallkaryawan(Nama);
         } else {
             karyawan = await getallkaryawan();
         }
@@ -17,10 +17,10 @@ router.get("/", async (req,res) => {
     }
 });
 
-router.get("/:id", async (req,res) => {
+router.get("/:Nomor_Induk", async (req,res) => {
     try {
-        const id = req.params.id;
-        const karyawan = await getallkaryawanbyid(id);
+        const Nomor_Induk = req.params.Nomor_Induk;
+        const karyawan = await getallkaryawanbyid(Nomor_Induk);
         res.send(karyawan);
     } catch (error) {
         res.status(400).send(error.message);

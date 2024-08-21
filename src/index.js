@@ -11,10 +11,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended:true}));
 
 const karyawanController = require("./karyawan/karyawan.controller");
-const cutiController = require("./cuti/cuit.controller");
+const cutiController = require("./cuti/cuti.controller");
 
 app.use('/karyawan', karyawanController);
-app.use('/cuti', cutiController);
+// app.use('/cuti', cutiController);
 
 
 app.listen(PORT, () =>{
