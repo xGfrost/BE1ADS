@@ -1,5 +1,5 @@
 const express = require('express');
-const { getallcuti, getallcutibyid } = require("./cuti.service");
+const { getallcuti, getallcutibyid, createcuti, updatecuti, deletecuti } = require("./cuti.service");
 const router = express.Router();
 
 router.get("/", async (req,res) => {
@@ -17,12 +17,46 @@ router.get("/", async (req,res) => {
     }
 })
 
-router.get("/:Nomor_Induk", async (req, res) => {
-    console.log(req.params.Nomor_Induk)
+router.get("/:id", async (req, res) => {
     try {
-        const Nomor_Induk = req.params.Nomor_Induk;
-        const ct = await getallcutibyid(Nomor_Induk);
+        const id = req.params.id;
+        const ct = await getallcutibyid(id);
         res.send(ct)
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+})
+
+router.post("/", async (req,res) => {
+    
+    try {
+        const cutidata= req.body;
+        const ky = await createcuti(cutidata);
+        
+        res.send(ky);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+})
+
+router.post("/update/:id", async (req,res) => {
+    try {
+        const id = req.params.id
+        const cutidata= req.body
+        const ky = await updatecuti(id,cutidata);
+        res.send(ky);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+})
+
+router.post("/delete/:id", async (req, res) => {
+    try {
+        const id = req.params.id
+        await deletecuti(id);
+        res.send({
+            messgae: "Success"
+        })
     } catch (error) {
         res.status(400).send(error.message);
     }
